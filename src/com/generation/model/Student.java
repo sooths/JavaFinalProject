@@ -20,10 +20,14 @@ public class Student
     {
         super( id, name, email, birthDate );
     }
+    private List<Course> enrolledCourses;
 
     public void enrollToCourse( Course course )
     {
-        //TODO implement this method
+        if (enrolledCourses == null) {
+            enrolledCourses = new ArrayList<>();
+        }
+        enrolledCourses.add(course);
     }
 
     public void registerApprovedCourse( Course course )
@@ -34,7 +38,13 @@ public class Student
 
     public boolean isAttendingCourse( String courseCode )
     {
-        //TODO implement this method
+        if (enrolledCourses != null) {
+            for (Course course : enrolledCourses) {
+                if (course.getCourseCode().equals(courseCode)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
