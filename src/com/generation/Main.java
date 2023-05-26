@@ -12,9 +12,26 @@ import java.util.Scanner;
 public class Main
 {
 
+    
     public static void main( String[] args )
         throws ParseException
     {
+        PrinterHelper printerHelper = new PrinterHelper();
+        StudentService studentService = new StudentService();
+
+        // Create a new student
+        Student student = printerHelper.createStudentMenu();
+        
+        // Enroll the student in a few courses
+        Course mathCourse = new Course("MATH101", "Mathematics");
+        Course englishCourse = new Course("ENG101", "English");
+        
+        student.enrollToCourse(mathCourse);
+        student.enrollToCourse(englishCourse);
+        
+        // Show students and courses summary
+        studentService.showSummary();
+        
         StudentService studentService = new StudentService();
         CourseService courseService = new CourseService();
         Scanner scanner = new Scanner( System.in );
