@@ -10,7 +10,26 @@ import java.util.Scanner;
 
 public class PrinterHelper
 {
+    public Student createStudentMenu() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter student name: ");
+        String name = scanner.nextLine();
+        
+        System.out.println("Enter date of birth (dd/MM/yyyy): ");
+        String dateString = scanner.nextLine();
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateOfBirth = null;
+        try {
+            dateOfBirth = dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            System.out.println("Invalid date format. Please use the format dd/MM/yyyy.");
+            return null;
+        }
+        
+        // Create the student object with the provided details
+        return new Student(name, dateOfBirth
     public static void showMainMenu(){
         System.out.println( "|-------------------------------|" );
         System.out.println( "| Welcome to StudentGen         |" );
