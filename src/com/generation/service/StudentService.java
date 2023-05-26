@@ -26,7 +26,16 @@ public class StudentService
 
     public void showSummary()
     {
-        //TODO implement
+       for (Student student : students) {
+            System.out.println("Student: " + student.getName());
+            if (student.getEnrolledCourses() != null) {
+                System.out.println("Enrolled Courses:");
+                for (Course course : student.getEnrolledCourses()) {
+                    System.out.println("- " + course.getCourseName());
+                }
+            }
+            System.out.println();
+        }
     }
 
     public void enrollToCourse( String studentId, Course course )
